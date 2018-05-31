@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mintfrost.weatherstation.MainActivity">
+    <item
+        android:id="@+id/action_toggle_notification"
+        android:checkable="true"
+        android:orderInCategory="101"
+        android:title="@string/action_enable_notification" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="102"
+        android:title="Settings" />
+</menu>
