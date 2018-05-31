@@ -4,11 +4,13 @@ public class ConditionSnapshot {
     String date;
     String tempValue;
     String humValue;
+    String pressureValue;
 
-    public ConditionSnapshot(String date, String tempValue, String humValue) {
+    public ConditionSnapshot(String date, String tempValue, String humValue, String pressureValue) {
         this.date = date;
         this.tempValue = tempValue;
         this.humValue = humValue;
+        this.pressureValue = pressureValue;
     }
 
     public String getDate() {
@@ -21,5 +23,9 @@ public class ConditionSnapshot {
 
     public String getHumValue() {
         return humValue;
+    }
+
+    public String getPressureValue() {
+        return pressureValue;
     }
 }

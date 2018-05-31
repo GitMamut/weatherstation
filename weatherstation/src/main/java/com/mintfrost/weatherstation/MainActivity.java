@@ -27,10 +27,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_LOCATION = "extraLocation";
-    public static final String[] SERVICE_URL = new String[]{"currentOutdoor", "currentIndoor"};
+    public static final String[] SERVICE_URL = new String[]{"currentOutdoor", "currentPressure", "currentIndoor"};
 
-    private static final String[] LOCATION_DESCRIPTION = new String[]{"OUTDOOR", "INDOOR"};
-    private static final int NUMBER_OF_FRAGMENTS = 2;
+    private static final String[] LOCATION_DESCRIPTION = new String[]{"OUTDOOR", "PRESSURE", "INDOOR"};
+    private static final int NUMBER_OF_FRAGMENTS = 3;
     private static final TemperatureFragment[] FRAGMENTS_MAP = new TemperatureFragment[NUMBER_OF_FRAGMENTS];
     private static final String ACTION_CHECK_TEMPERATURE = "com.mintfrost.weatherstation.action.CHECK_TEMPERATURE";
     private ViewPager mViewPager;
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setOffscreenPageLimit(2);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -82,7 +82,8 @@ public class FetchTemperatureTask extends AsyncTask<String, Void, List<Condition
                 conditionsList.add(new ConditionSnapshot(
                         getStringOrNull(jsonObject, "date"),
                         temperature,
-                        getStringOrNull(jsonObject, "humValue")));
+                        getStringOrNull(jsonObject, "humValue"),
+                        getStringOrNull(jsonObject, "pressureValue")));
             }
         } catch (IOException | JSONException e) {
             Log.e(this.getClass().getCanonicalName(), "Error fetching data", e);

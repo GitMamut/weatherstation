@@ -16,6 +16,7 @@ import java.util.List;
 
 public class TemperatureFragment extends Fragment implements DateFetchListener {
     public static final String DEGREES_CELSIUS = "°C";
+    public static final String HECTOPASCALS = "hPa";
 
     private static final String EMPTY_VALUE = "--,-" + DEGREES_CELSIUS;
 
@@ -71,6 +72,10 @@ public class TemperatureFragment extends Fragment implements DateFetchListener {
             if (humValue != null) {
                 setHumidityValue(humValue);
             }
+            String pressureValue = conditionSnapshot.getPressureValue();
+            if (pressureValue != null) {
+                setPressureValue(pressureValue);
+            }
         }
     }
 
@@ -81,6 +86,7 @@ public class TemperatureFragment extends Fragment implements DateFetchListener {
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+
 
     private void showProgressDialog() {
         if (this.getContext() != null) {
@@ -108,6 +114,11 @@ public class TemperatureFragment extends Fragment implements DateFetchListener {
     }
 
     @SuppressLint("SetTextI18n")
+    private void setPressureValue(String pressureValue) {
+        textViewHumidity.setText(pressureValue.substring(0,pressureValue.indexOf('.')+2) + HECTOPASCALS);
+    }
+
+    @SuppressLint("SetTextI18n")
     public void setDateValue(String date) {
         final int lastDash = date.lastIndexOf("-");
         final String dateDate = date.substring(0, lastDash);
@@ -117,13 +128,13 @@ public class TemperatureFragment extends Fragment implements DateFetchListener {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        if (textViewDate.getText() != null) {
+        if (textViewDate != null && textViewDate.getText() != null) {
             outState.putString(TEXT_DATE, textViewDate.getText().toString());
         }
-        if (textViewTemperature.getText() != null) {
+        if (textViewTemperature != null && textViewTemperature.getText() != null) {
             outState.putString(TEXT_TEMPERATURE, textViewTemperature.getText().toString());
         }
-        if (textViewHumidity.getText() != null) {
+        if (textViewHumidity!= null && textViewHumidity.getText() != null) {
             outState.putString(TEXT_HUMIDITY, textViewHumidity.getText().toString());
         }
         super.onSaveInstanceState(outState);
